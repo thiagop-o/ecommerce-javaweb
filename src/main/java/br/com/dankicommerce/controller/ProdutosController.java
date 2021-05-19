@@ -5,10 +5,10 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 
 @Controller
-@Path("login")
-public class LoginController {
+@Path("produtos")
+public class ProdutosController {
 	@Get("")
-	public void login() {
+	public void produtos() {
 		
 	}
 }
