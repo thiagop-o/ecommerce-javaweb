@@ -77,7 +77,7 @@
 				<div class="row justify-content-md-center mb-5 text-center">
 					<div class="col-md-12 align-self-center text-center">
 						<div class="form-group input-login mx-auto">
-							<input name="usuario.nome" value="${ usuario.getNome() }" class="form-control" id="email"
+							<input name="usuario.nome" value="${ usuario.getNome() }" minlength="3" maxlength="100" class="form-control" id="email"
 								type="text" placeholder="Nome *" required="required"
 								data-validation-required-message="Please enter your email address." />
 							<p class="help-block text-danger"></p>
@@ -89,8 +89,14 @@
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group input-login mx-auto">
-							<input name="usuario.senha" value="${ usuario.getSenha() }" class="form-control" id="phone"
+							<input name="usuario.senha" value="${ usuario.getSenha() }" minlength="6" class="form-control" id="phone"
 								type="password" placeholder="Senha *" required="required"
+								data-validation-required-message="Insira sua senha." />
+							<p class="help-block text-danger"></p>
+						</div>
+						<div class="form-group input-login mx-auto">
+							<input name="confirmaSenha" value="${ confirmaSenha }" minlength="6" class="form-control" id="phone"
+								type="password" placeholder="Confirma Senha *" required="required"
 								data-validation-required-message="Insira sua senha." />
 							<p class="help-block text-danger"></p>
 						</div>

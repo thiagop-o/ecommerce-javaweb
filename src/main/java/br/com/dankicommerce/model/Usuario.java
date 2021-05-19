@@ -20,6 +20,7 @@ public class Usuario extends Model{
 	@Email
 	private String email;
 	@NotEmpty
+	@Size(min = 3,message = "{usuario.senha.size}")
 	private String senha;
 
 	public String getNome() {
