@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
@@ -57,15 +57,15 @@
 				<div class="row justify-content-md-center mb-5 text-center">
 					<div class="col-md-12 align-self-center text-center">
 						<div class="form-group input-login mx-auto">
-							<input name="usuario.nome" value="${ usuario.getNome() }" minlength="3" maxlength="100" class="form-control" id="email"
+							<input name="usuario.nome" value="${ usuario.getNome() }" minlength="3" maxlength="255" class="form-control" id="email"
 								type="text" placeholder="Nome *" required="required"
-								data-validation-required-message="Please enter your email address." />
+								data-validation-required-message="Por favor insira um nome valido." />
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group input-login mx-auto">
 							<input name="usuario.email" value="${ usuario.getEmail() }"  class="form-control" id="email"
 								type="email" placeholder="Email *" required="required"
-								data-validation-required-message="Please enter your email address." />
+								data-validation-required-message="Por favor insira um nome e-mail." />
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group input-login mx-auto">
