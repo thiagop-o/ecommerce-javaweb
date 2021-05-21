@@ -1,5 +1,6 @@
 package br.com.dankicommerce.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Size;
 
@@ -16,11 +17,13 @@ public class Usuario extends Model{
 	@NotEmpty
 	@Size(min = 3, max = 255,message = "{usuario.nome.size}")
 	private String nome;
+	
 	@NotEmpty
-	@Email
+	@Email @Column(unique = true)
 	private String email;
+	
 	@NotEmpty
-	@Size(min = 3,message = "{usuario.senha.size}")
+	@Size(min = 6,message = "{usuario.senha.size}")
 	private String senha;
 
 	public String getNome() {

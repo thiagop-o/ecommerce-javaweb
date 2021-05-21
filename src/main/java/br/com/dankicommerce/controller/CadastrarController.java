@@ -2,6 +2,7 @@ package br.com.dankicommerce.controller;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
@@ -12,16 +13,18 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.dankicommerce.dao.UsuarioDAO;
 import br.com.dankicommerce.model.Usuario;
-import br.com.olimposistema.aipa.dao.DAO;
 
 @Controller
 @Path("cadastrar")
 public class CadastrarController {
 	@Inject EntityManager em;
 	@Inject Result result;
-	@Inject DAO<Usuario> usuarioDAO;
+	@Inject UsuarioDAO usuarioDAO;
 	@Inject Validator validator;
+	@Inject HttpSession session;
+	
 	boolean verificaSeAsSenhasSaoIguais;
 	@Get("")
 	public void cadastrar() {
@@ -36,7 +39,11 @@ public class CadastrarController {
 		validator.onErrorRedirectTo(this).cadastrar();
 
 		usuarioDAO.insert(usuario);
+		
+		
+		session.setAttribute("usuarioLogado", usuario);
 		result.redirectTo(ProdutosController.class).produtos();
+		
 		
 	}
 	
