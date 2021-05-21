@@ -1,4 +1,4 @@
-package br.com.dankicommerce.controller;
+package br.com.decommerce.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;

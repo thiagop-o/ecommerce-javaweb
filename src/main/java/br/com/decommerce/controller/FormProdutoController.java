@@ -1,4 +1,4 @@
-package br.com.dankicommerce.controller;
+package br.com.decommerce.controller;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;

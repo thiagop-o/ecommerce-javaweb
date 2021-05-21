@@ -1,4 +1,4 @@
-package br.com.dankicommerce.controller;
+package br.com.decommerce.controller;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -13,8 +13,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.dankicommerce.dao.UsuarioDAO;
-import br.com.dankicommerce.model.Usuario;
+import br.com.decommerce.dao.UsuarioDAO;
+import br.com.decommerce.model.Usuario;
 
 @Controller
 @Path("cadastrar")

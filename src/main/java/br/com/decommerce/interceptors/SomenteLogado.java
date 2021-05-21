@@ -1,4 +1,4 @@
-package br.com.dankicommerce.interceptors;
+package br.com.decommerce.interceptors;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

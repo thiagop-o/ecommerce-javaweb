@@ -1,4 +1,4 @@
-package br.com.dankicommerce.controller;
+package br.com.decommerce.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -7,7 +7,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.dankicommerce.interceptors.SomenteLogado;
+import br.com.decommerce.interceptors.SomenteLogado;
 
 @Controller
 @Path("categorias")

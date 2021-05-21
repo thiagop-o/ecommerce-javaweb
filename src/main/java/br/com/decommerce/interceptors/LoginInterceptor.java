@@ -1,4 +1,4 @@
-package br.com.dankicommerce.interceptors;
+package br.com.decommerce.interceptors;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -8,8 +8,8 @@ import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.AcceptsWithAnnotations;
 import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
-import br.com.dankicommerce.controller.LoginController;
-import br.com.dankicommerce.model.Usuario;
+import br.com.decommerce.controller.LoginController;
+import br.com.decommerce.model.Usuario;
 import br.com.olimposistema.aipa.service.Util;
 
 @Intercepts

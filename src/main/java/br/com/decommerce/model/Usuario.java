@@ -1,4 +1,4 @@
-package br.com.dankicommerce.model;
+package br.com.decommerce.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

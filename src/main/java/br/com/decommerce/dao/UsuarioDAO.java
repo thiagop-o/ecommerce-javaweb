@@ -1,4 +1,4 @@
-package br.com.dankicommerce.dao;
+package br.com.decommerce.dao;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import br.com.dankicommerce.model.Usuario;
+import br.com.decommerce.model.Usuario;
 import br.com.olimposistema.aipa.dao.DAO;
 
 @RequestScoped
