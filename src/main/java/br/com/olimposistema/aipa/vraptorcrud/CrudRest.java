@@ -37,25 +37,25 @@ public class CrudRest<T extends Model> {
 			
 	}
 	
-	@Get("") @Api @ApiSeguro
+	@Get("") @Api //@ApiSeguro
 	public void lista() throws Exception {
 		List<T> lista = dao.selectAll();
 		new SerializeResponse(result, modelClass).serializeJson(lista);
 	}
 	
-	@Get("todos") @Api @ApiSeguro
+	@Get("todos") @Api //@ApiSeguro
 	public void listaTodos() throws Exception {
 		List<T> lista = pesquisaLista();
 		new SerializeResponse(result, modelClass).serializeJson(lista);
 	}
 	
-	@Post("") @Consumes(value="application/json") @Api @ApiSeguro
+	@Post("") @Consumes(value="application/json") @Api //@ApiSeguro
 	public void adicionaRest(@Valid T model) {	
 		T modelInserido = dao.insert(model);
 		new SerializeResponse(result, modelClass).serializeJson(modelInserido);	
 	}
 	
-	@Get("{id}") @Api @ApiSeguro
+	@Get("{id}") @Api //@ApiSeguro
 	public void pesquisaId(Integer id) throws Exception {
 		T model = this.modelClass.newInstance();
 		model.setId(id);
@@ -63,7 +63,7 @@ public class CrudRest<T extends Model> {
 		new SerializeResponse(result, modelClass).serializeJson(modelSelecionado);
 	}
 	
-	@Put("{id}") @Consumes("application/json") @Api @ApiSeguro
+	@Put("{id}") @Consumes("application/json") @Api //@ApiSeguro
 	public void atualizaCompleto(@Valid T model, Integer id) {
 		validator.onErrorSendBadRequest();
 		model.setId(id);
@@ -72,7 +72,7 @@ public class CrudRest<T extends Model> {
 		new SerializeResponse(result, modelClass).serializeJson(modelAtualizado);
 	}
 	
-	@Delete("{id}") @Api @ApiSeguro
+	@Delete("{id}") @Api //@ApiSeguro
 	public void deleta(T model, Integer id) {
 		model.setId(id);
 		dao.delete(model);
