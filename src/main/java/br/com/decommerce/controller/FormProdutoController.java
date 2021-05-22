@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.decommerce.dao.ProdutoDAO;
 import br.com.decommerce.interceptors.SomenteLogado;
 import br.com.decommerce.model.Categoria;
 import br.com.decommerce.model.Produto;
@@ -21,7 +22,7 @@ public class FormProdutoController {
 	@Inject Validator validator;
 	@Inject Result result;
 	@Inject DAO<Categoria> categoriaDAO;
-	@Inject DAO<Produto> produtoDAO;
+	@Inject ProdutoDAO produtoDAO;
 	
 	
 	@Get("")
@@ -37,7 +38,7 @@ public class FormProdutoController {
 		validator.onErrorRedirectTo(this).formproduto();
 		produtoDAO.insertOrUpdate(produto);
 		
-		result.redirectTo(ProdutosController.class).produtos();;
+		result.redirectTo(ProdutosController.class).produtos(null);
 
 	}
 	

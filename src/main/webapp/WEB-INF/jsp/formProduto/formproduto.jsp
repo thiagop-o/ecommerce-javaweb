@@ -54,12 +54,13 @@
 				</div>
 			</c:if>
 			<form method="post"
-				action="<c:url value="formproduto/salvaProduto"/>" enctype="multipart/form-data">
+				action="<c:url value="formproduto/salvaProduto"/>"
+				enctype="multipart/form-data">
 				<div class="row justify-content-md-center mb-5 text-center">
 					<div class="col-md-12 align-self-center text-center">
 						<div class="form-group input-login mx-auto">
-							<input name="produto.imagem.file" id="input-id" type="file" class="file"
-								data-preview-file-type="text" required="required">
+							<input name="produto.imagem.file" id="input-id" type="file"
+								class="file" data-preview-file-type="text" required="required">
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group input-login mx-auto">
@@ -78,27 +79,28 @@
 						</div>
 						<div class="form-group input-login mx-auto">
 							<textarea name="produto.descricao" class="form-control"
-								placeholder="Descreva o Produto" required="required">
-                               ${produto.descricao }
-                               </textarea>
+								placeholder="Descreva o Produto" required="required">${produto.descricao}</textarea>
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
-							<select  name="produto.categoria.id" class="form-control input-login mx-auto" id="email" required="required"
-								data-validation-required-message="Please enter your email address." >
+							<select name="produto.categoria.id"
+								class="form-control input-login mx-auto" id="email"
+								required="required"
+								data-validation-required-message="Please enter your email address.">
 								<c:forEach var="categoria" items="${categorias }">
-								<option value="${categoria.id }">${categoria.nome}</option>
-								
+									<option value="${categoria.id }">${categoria.nome}</option>
+
 								</c:forEach>
-								
-								
-	
+
+
+
 							</select>
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group input-login mx-auto">
-							<input name="produto.dataValidadeEn" value="${produto.dataValidade }" class="form-control date-br" id="valor" type="date"
-								placeholder="Data Validade *" 
+							<input name="produto.dataValidadeEn"
+								value="${produto.dataValidade }" class="form-control date-br"
+								id="valor" type="date" placeholder="Data Validade *"
 								data-validation-required-message="Digite a data de Validade do Produto" />
 							<p class="help-block text-danger"></p>
 						</div>

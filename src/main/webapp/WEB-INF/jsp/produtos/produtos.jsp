@@ -40,29 +40,32 @@
 	<section class="page-section bg-light" id="portfolio">
 		<div class="container">
 			<div>
-				<form>
+				<form method="get" action="<c:url value="produtos"/>">
 					<div class="row mb-5">
 						<div class="col-md-6">
 							<div class="form-group">
-								<input class="form-control" id="email" type="email"
-									placeholder="Pesquisar.." required="required"
+								<input name="filtro.nome" value="${filtro.nome}" class="form-control" id="email" type="text"
+									placeholder="Pesquisar.." 
 									data-validation-required-message="Please enter your email address." />
 								<p class="help-block text-danger"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<select class="form-control" id="email" required="required"
+								<select name="filtro.categoria.id" class="form-control" id="email" 
 									data-validation-required-message="Please enter your email address.">
-									<option>Roupas</option>
-									<option>Acessórios</option>
+									<option value="">(Todos)</option>
+									<c:forEach var="categoria" items="${categorias }">
+										<option ${(filtro !=null && filtro.categoria != null && categoria.id == filtro.categoria.id) ? "selected":"" } value="${categoria.id }">${categoria.nome}</option>
+
+									</c:forEach>
 								</select>
 								<p class="help-block text-danger"></p>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group mb-md-0">
-								<button
+								<button type="submit"
 									class="btn btn-primary btn-xl text-uppercase js-scroll-trigger">Pesquisar</button>
 							</div>
 						</div>
@@ -77,163 +80,77 @@
 				</form>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal1">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="assets/img/portfolio/01-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">R$ 99,00</div>
-							<div class="portfolio-caption-subheading text-muted">
-								Camisa Polo Basica</div>
+				<c:forEach var="produto" items="${produtos}">
+
+
+
+					<!-- cARD 1-->
+					<div class="col-lg-4 col-sm-6 mb-4">
+						<div class="portfolio-item">
+							<a class="portfolio-link" data-toggle="modal"
+								href="#portfolioModal${produto.id }">
+								<div class="portfolio-hover">
+									<div class="portfolio-hover-content">
+										<i class="fas fa-plus fa-3x"></i>
+									</div>
+								</div> <img class="img-fluid" src="img/get/${produto.imagem.nome}"
+								alt="" />
+							</a>
+							<div class="portfolio-caption">
+								<div class="portfolio-caption-heading">${produto.valorDinheiro}</div>
+								<div class="portfolio-caption-subheading text-muted">
+									${produto.nome}</div>
+							</div>
 						</div>
 					</div>
-				</div>
+					<!-- FIM DO CARD-->
 
-				<!-- Modal 1-->
-				<div class="portfolio-modal modal fade" id="portfolioModal1"
-					tabindex="-1" role="dialog" aria-hidden="true">
-					<div class="modal-dialog mx-auto">
-						<div class="modal-content">
-							<div class="close-modal" data-dismiss="modal">
-								<img src="assets/img/close-icon.svg" alt="Close modal" />
-							</div>
-							<div class="container">
-								<div class="row justify-content-center">
-									<div class="col-lg-8">
-										<div class="modal-body">
-											<!-- Project Details Go Here-->
-											<img class="img-fluid d-block mx-auto img-modal"
-												src="assets/img/portfolio/01-full.jpg" alt="" />
-											<h2 class="text-uppercase">R$ 99,00</h2>
-											<p class="item-intro text-muted">Camisa Polo Basica</p>
-											<p>A camisa polo possui algumas qualidades e a maior
-												delas sem dÃºvidas Ã© a sua versatilidade, pois vocÃª
-												consegue usÃ¡-la nÃ£o sÃ³ em ambientes extremamente
-												informais, como em ambientes atÃ© um pouco mais formais.
-												EntÃ£o, esse tipo de camisa transita bem entre os dois,
-												afinal ela estÃ¡ no meio do caminho entre o formal e o
-												informal, entre uma camiseta e uma camisa social.</p>
-											<ul class="list-inline">
-												<li>Valido Até: 01/03/2021</li>
-											</ul>
-											<div class="d-flex justify-content-center">
-												<div class="form-group mb-md-0 ml-2">
-													<button
-														class="btn btn-primary btn-xl text-uppercase js-scroll-trigger">Comprar</button>
+
+					<!-- Modal 1-->
+					<div class="portfolio-modal modal fade"
+						id="portfolioModal${produto.id }" tabindex="-1" role="dialog"
+						aria-hidden="true">
+						<div class="modal-dialog mx-auto">
+							<div class="modal-content">
+								<div class="close-modal" data-dismiss="modal">
+									<img src="assets/img/close-icon.svg" alt="Close modal" />
+								</div>
+								<div class="container">
+									<div class="row justify-content-center">
+										<div class="col-lg-8">
+											<div class="modal-body">
+												<!-- Project Details Go Here-->
+												<img class="img-fluid d-block mx-auto img-modal"
+													src="img/get/${produto.imagem.nome}" alt="" />
+												<h2 class="text-uppercase">${produto.valorDinheiro}</h2>
+												<p class="item-intro text-muted">${produto.nome}</p>
+												<p>${produto.descricao }</p>
+												<ul class="list-inline">
+													<li>Valido Até: ${produto.dataValidadeFormatada}</li>
+												</ul>
+												<div class="d-flex justify-content-center">
+													<div class="form-group mb-md-0 ml-2">
+														<button
+															class="btn btn-primary btn-xl text-uppercase js-scroll-trigger">Comprar</button>
+													</div>
+													<div class="form-group mb-md-0 ml-2">
+														<button
+															class="btn btn-info btn-xl text-uppercase js-scroll-trigger"
+															onclick="window.location.href='formproduto.html#formproduto'">Editar</button>
+													</div>
 												</div>
-												<div class="form-group mb-md-0 ml-2">
-													<button
-														class="btn btn-info btn-xl text-uppercase js-scroll-trigger"
-														onclick="window.location.href='formproduto.html#formproduto'">Editar</button>
-												</div>
+
 											</div>
-
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal2">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="assets/img/portfolio/02-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">R$ 30,00</div>
-							<div class="portfolio-caption-subheading text-muted">
-								Bandeira Keep</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal3">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="assets/img/portfolio/03-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">R$ 95,00</div>
-							<div class="portfolio-caption-subheading text-muted">Molde
-								para Sapato</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal4">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="assets/img/portfolio/04-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">R$ 4.199,00</div>
-							<div class="portfolio-caption-subheading text-muted">
-								Camera Canon EOS</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal5">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="assets/img/portfolio/05-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">R$ 2.349,00</div>
-							<div class="portfolio-caption-subheading text-muted">
-								Notebook Inspiron 15 3000 4GB 500GB</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6">
-					<div class="portfolio-item">
-						<a class="portfolio-link" data-toggle="modal"
-							href="#portfolioModal6">
-							<div class="portfolio-hover">
-								<div class="portfolio-hover-content">
-									<i class="fas fa-plus fa-3x"></i>
-								</div>
-							</div> <img class="img-fluid"
-							src="assets/img/portfolio/06-thumbnail.jpg" alt="" />
-						</a>
-						<div class="portfolio-caption">
-							<div class="portfolio-caption-heading">R$ 2.549,00</div>
-							<div class="portfolio-caption-subheading text-muted">
-								iPhone SE Apple 64GB</div>
-						</div>
-					</div>
-				</div>
+					<!-- FIM DO MODAL -->
+				</c:forEach>
 			</div>
+
 		</div>
 	</section>
 

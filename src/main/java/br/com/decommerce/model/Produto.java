@@ -17,11 +17,15 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.decommerce.rn.ConverteDataDeEnParaCalendar;
+import br.com.decommerce.rn.FormataDeDoubleParaReais;
+import br.com.decommerce.rn.FormatarData;
+import br.com.olimposistema.aipa.dao.filter.FiltrableName;
 import br.com.olimposistema.aipa.imagem.Imagem;
 import br.com.olimposistema.aipa.model.Model;
 
 @Entity
 public class Produto extends Model{
+	@FiltrableName
 	@NotEmpty(message = "{produto.nome.notempty}")
 	@Size(min = 3, max = 255,message = "{produto.nome.size}")
 	private String nome;
@@ -64,6 +68,11 @@ public class Produto extends Model{
 	public Double getValor() {
 		return valor;
 	}
+	
+	public String getValorDinheiro() {
+		return  new FormataDeDoubleParaReais().executa(valor);
+		
+	}
 
 	public void setValor(Double valor) {
 		this.valor = valor;
@@ -80,6 +89,13 @@ public class Produto extends Model{
 	public Calendar getDataValidade() {
 		return dataValidade;
 	}
+	
+	public String getDataValidadeFormatada() {
+		//String dataFormatada =  new SimpleDateFormat("dd/MM/yyyy").format(dataValidade.getTime());
+		String dataFormatada = new FormatarData().executa(dataValidade);
+		return dataFormatada;
+	}
+	
 
 	public void setDataValidade(Calendar dataValidade) {
 		this.dataValidade = dataValidade;

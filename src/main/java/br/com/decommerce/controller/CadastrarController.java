@@ -42,7 +42,7 @@ public class CadastrarController {
 		
 		
 		session.setAttribute("usuarioLogado", usuario);
-		result.redirectTo(ProdutosController.class).produtos();
+		result.redirectTo(ProdutosController.class).produtos(null);
 		
 		
 	}
